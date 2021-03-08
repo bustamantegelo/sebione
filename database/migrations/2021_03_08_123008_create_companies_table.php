@@ -28,13 +28,16 @@ class CreateCompaniesTable extends Migration
                 ->comment('type: varchar, length: 255, comment: Company name');
             $table->string('email')
                 ->length(255)
-                ->comment('type: varchar, length: 255, comment: Company email');
+                ->comment('type: varchar, length: 255, comment: Company email')
+                ->nullable();
             $table->string('logo')
                 ->length(255)
-                ->comment('type: varchar, length: 255, comment: Company logo file path');
+                ->comment('type: varchar, length: 255, comment: Company logo file path')
+                ->nullable();
             $table->string('website')
                 ->length(2083)
-                ->comment('type: varchar, length: 2083, comment: Company website');
+                ->comment('type: varchar, length: 2083, comment: Company website')
+                ->nullable();
             $table->timestamp('created_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'))
                 ->comment('type: timestamp, length: , comment: row created date');
