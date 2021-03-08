@@ -5,13 +5,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * CreateCompaniesTable
+ * CreateEmployeesTable
  * @package ${NAMESPACE}
  * @author  Angelo C. Bustamante <bustamantegelo@gmail.com>
  * @since   08/03/2021
  * @version 1.0
  */
-class CreateCompaniesTable extends Migration
+class CreateEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,23 +20,29 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('T_COMPANIES', function (Blueprint $table) {
-            $table->bigIncrements('company_id')
+        Schema::create('T_EMPLOYEES', function (Blueprint $table) {
+            $table->bigIncrements('employee_id')
+                ->comment('type: big int, length: 20, comment: Employees Id');
+            $table->string('first_name')
+                ->length(35)
+                ->comment('type: varchar, length: 35, comment: Employees first name');
+            $table->string('last_name')
+                ->length(50)
+                ->comment('type: varchar, length: 50, comment: Employees last name');
+            $table->bigInteger('company_id')
+                ->unsigned()
                 ->comment('type: big int, length: 20, comment: Company Id');
-            $table->string('name')
-                ->length(255)
-                ->comment('type: varchar, length: 255, comment: Company name');
+            $table->foreign('company_id')
+                ->references('company_id')
+                ->on('T_COMPANIES')
+                ->onDelete('cascade');
             $table->string('email')
-                ->length(255)
-                ->comment('type: varchar, length: 255, comment: Company email')
+                ->length(254)
+                ->comment('type: varchar, length: 254, comment: Employees email')
                 ->nullable();
-            $table->string('logo')
-                ->length(255)
-                ->comment('type: varchar, length: 255, comment: Company logo file path')
-                ->nullable();
-            $table->string('website')
-                ->length(2083)
-                ->comment('type: varchar, length: 2083, comment: Company website')
+            $table->string('phone')
+                ->length(15)
+                ->comment('type: varchar, length: 15, comment: Employees phone number')
                 ->nullable();
             $table->timestamp('created_at')
                 ->default(DB::raw('CURRENT_TIMESTAMP'))
@@ -56,6 +62,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('T_COMPANIES');
+        Schema::dropIfExists('T_EMPLOYEES');
     }
 }
