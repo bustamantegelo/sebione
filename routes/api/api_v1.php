@@ -1,5 +1,5 @@
 <?php
-
-Route::get('/test', function () {
-    return 'Test success api';
+/** Users route */
+Route::prefix('users')->group(function () {
+    Route::get('/', 'UsersApiController@index');
 });

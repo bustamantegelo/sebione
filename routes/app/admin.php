@@ -1,5 +1,10 @@
 <?php
+/** View Route */
+Route::get('/', function() {
+    return view('main');
+});
 
-Route::get('/test', function () {
-    return 'Test success admin';
+/** Users route */
+Route::prefix('users')->group(function () {
+    Route::post('/login', 'UserAdminController@login');
 });
