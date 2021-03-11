@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Core\BaseController;
 use App\Core\BaseTransformer;
 use App\Services\UserService;
-use App\Validators\Users\UsersLoginValidator;
+use App\Validators\UsersLoginValidator;
 
 /**
  * UserAdminController

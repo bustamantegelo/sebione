@@ -33,4 +33,12 @@ class AppConstants
 
     /** Users route constants */
     const USERS = 'users';
+
+    /** Comapnies route constants */
+    const COMPANIES = 'companies';
+    const COMPANY = 'company';
+
+    /** @Employees route constants */
+    const EMPLOYEES = 'employees';
+    const EMPLOYEE = 'employee';
 }

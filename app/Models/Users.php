@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Constants\EmployeesConstants;
 use App\Constants\UsersConstants;
 use Illuminate\Database\Eloquent\Model;
 

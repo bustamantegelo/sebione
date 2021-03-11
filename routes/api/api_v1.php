@@ -1,5 +1,5 @@
 <?php
-/** Users route */
-Route::prefix('users')->group(function () {
-    Route::get('/', 'UsersApiController@index');
-});
+
+Route::resource('/users', 'UsersApiController');
+Route::resource('/companies', 'CompaniesApiController');
+Route::resource('/employees', 'EmployeesApiController');

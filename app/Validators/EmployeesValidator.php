@@ -1,19 +1,25 @@
 <?php
 
-namespace App\Validators\Users;
+namespace App\Validators;
 
 use Illuminate\Support\Facades\Validator;
 
 /**
- * UsersLoginValidator
- * @package App\Validators\Users
+ * EmployeesValidator
+ * @package App\Validators
  * @author  Angelo C. Bustamante <bustamantegelo@gmail.com>
- * @since   09/03/2021
+ * @since   10/03/2021
  * @version 1.0
  */
-class UsersLoginValidator
+class EmployeesValidator
 {
-    public static function validateUserLogin($aRequest)
+    /**
+     * Validate employees input
+     *
+     * @param $aRequest
+     * @return array
+     */
+    public static function validateEmployeesInput($aRequest)
     {
         $oValidator = Validator::make($aRequest, self::rules());
 
@@ -28,8 +34,11 @@ class UsersLoginValidator
     private static function rules()
     {
         return [
-            'email'    => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'max:60']
+            'first_name' => ['required', 'string', 'max:35'],
+            'last_name'  => ['required', 'string', 'max:50'],
+            'company_id' => ['required', 'int'],
+            'email'      => ['string', 'email', 'max:254', 'nullable'],
+            'phone'      => ['int', 'max:15', 'nullable']
         ];
     }
 
