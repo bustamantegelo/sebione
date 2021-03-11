@@ -125,6 +125,7 @@
              */
             getCompanies : function () {
                 let sUrl = '/companies';
+                this.oPagination.aPages = [];
                 this.$root.activateLoadingTable();
                 this.$root.getRequest(sUrl, (mResponse) => {
                     let oData = mResponse.data;
@@ -307,7 +308,6 @@
              */
             changePage : function (iPage) {
                 this.oPagination.iOffset = (this.oPagination.iLimit * iPage) - this.oPagination.iLimit;
-                this.oPagination.aPages = [];
                 this.getCompanies();
             }
         }
